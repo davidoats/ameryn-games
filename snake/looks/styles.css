@@ -1,0 +1,59 @@
+body {
+  margin: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+}
+
+canvas {
+  background: white;
+  border: 5px solid #e879d2;
+}
+
+/* overlay background */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 192, 203, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* center card */
+.card {
+  background: white;
+  padding: 30px 40px;
+  text-align: center;
+  border: 2px solid #ff4d88;
+}
+
+.card h1 {
+  color: #ff1a75;
+  margin-bottom: 15px;
+}
+
+.styleButton {
+  padding: 10px 18px;
+  font-size: 16px;
+  border: none;
+  background: #ff4d88;
+  color: white;
+  cursor: pointer;
+}
+
+#exitButton {
+  padding: 10px 16px;
+  font-size: 20px;
+  border: none;
+  background: #ff4d88;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  
+}

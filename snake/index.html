@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="./looks/styles.css" rel="stylesheet">
+<title>Snake</title>
+</head>
+<body>
+
+<canvas id="game" width="400" height="400"></canvas>
+
+<div class="overlay" id="deathScreen">
+  <div class="card">
+    <h1>Try Again Pookie!</h1>
+    <button class="styleButton" onclick="resetGame()">Play Again</button>
+  </div>
+</div>
+
+<div class="overlay" id="winScreen">
+  <div class="card">
+    <h1>You Win ♥️</h1>
+    <button class="styleButton" onclick="resetGame()">Play Again</button>
+  </div>
+</div>
+
+<button id="exitButton">X</button>
+<script src="./feels/index.js"></script>
+</body>
+</html>
