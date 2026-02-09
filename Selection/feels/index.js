@@ -21,9 +21,9 @@ document.getElementById("manual").onclick = () => {
 };
 
 document.getElementById("open").onclick = () => {
-  document.location.href = `../../${selectedGame}/`
+  document.location.href = `https://davidoats.github.io/ameryn-games/${selectedGame}/`
 };
 
 document.getElementById("mail").onclick = () => {
-  document.location.href = '../../Landing/'
+  document.location.href = 'https://davidoats.github.io/ameryn-games/Landing/'
 };

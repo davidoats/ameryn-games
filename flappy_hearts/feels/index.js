@@ -188,7 +188,7 @@ document.addEventListener("keydown", e => {
 });
 
 document.getElementById("exitButton").onclick = () => {
-  document.location.href = '../../Selection/'
+  document.location.href = 'https://davidoats.github.io/ameryn-games/Selection/'
 };
 
 loop();
