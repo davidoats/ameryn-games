@@ -51,14 +51,26 @@ let h=p.h*zoom;
 
 let img=textures["player"];
 
-if(img instanceof Image){
-ctx.drawImage(img,x,y,w,h);
-}else{
-ctx.fillStyle="red";
-ctx.fillRect(x,y,w,h);
+ctx.save();
+
+if(facing === -1){
+ctx.translate(x+w, y);
+ctx.scale(-1, 1);
+x = 0;
+y = 0;
 }
 
+if(img instanceof Image){
+ctx.drawImage(img, x, y, w, h);
+}else{
+ctx.fillStyle="red";
+ctx.fillRect(x, y, w, h);
 }
+
+ctx.restore();
+
+}
+
 
 // ===== HOTBAR =====
 
