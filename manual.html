@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Manual for my Pookie</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
+background:#ffe6f0;
+color:#222;
+}
+
+header{
+background:#ff4d88;
+color:white;
+text-align:center;
+padding:25px;
+font-size:28px;
+font-weight:bold;
+}
+
+.section{
+background:white;
+margin:20px;
+padding:20px;
+border-radius:12px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+.section h2{
+margin-top:0;
+color:#ff4da6;
+}
+
+.controls{
+background:#fff0f6;
+padding:10px;
+border-radius:8px;
+margin-top:10px;
+font-family:monospace;
+}
+
+#exitButton {
+  padding: 10px 16px;
+  font-size: 20px;
+  border: none;
+  background: #ff4d88;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  
+}
+
+footer{
+text-align:center;
+padding:20px;
+color:#555;
+font-size:14px;
+}
+</style>
+</head>
+
+<body>
+
+  
+<header>
+How to play these silly games I made:
+</header>
+<button id="exitButton">X</button>
+<div class="section">
+<h2>Snake</h2>
+<p>Guide the snake to collect hearts and spell our names!</p>
+<div class="controls">
+Arrow Keys → Move<br>
+Eat hearts → Grow<br>
+Reach full length → You win my ♥️
+</div>
+</div>
+
+<div class="section">
+<h2>Where is Your Man?</h2>
+<p>Navigate the maze and find me!</p>
+<div class="controls">
+Arrow Keys → Move<br>
+Find me → Win<br>
+Minimap shows where our locations
+</div>
+</div>
+
+<div class="section">
+<h2>Flappy Hearts</h2>
+<p>Float through the sky and collect hearts.</p>
+<div class="controls">
+Space Bar → Flap<br>
+Collect hearts for points
+</div>
+</div>
+
+<div class="section">
+<h2>Explorer</h2>
+<p>A work in progress</p>
+<div class="controls">
+A / D → Move<br>
+W / Space → Jump<br>
+Left Click → Break blocks<br>
+Right Click → Place blocks<br>
+C → Crafting menu<br>
+1–5 → Select hotbar slot
+</div>
+</div>
+<script>
+  document.getElementById("exitButton").onclick = () => {
+  document.location.href = 'https://davidoats.github.io/ameryn-games/Selection/'
+};
+</script>
+</body>
+</html>

@@ -17,7 +17,7 @@ games.forEach(game => {
 selectGame(games[0]);
 
 document.getElementById("manual").onclick = () => {
-  alert("Manual for " + selectedGame);
+  document.location.href = `https://davidoats.github.io/ameryn-games/manual.html`
 };
 
 document.getElementById("open").onclick = () => {
