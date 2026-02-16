@@ -23,3 +23,34 @@ function loadGame(){
 }
 
 if(!loadGame())generate();
+
+function resetWorld(){
+
+if(!confirm("Reset world? This cannot be undone 💔")) return;
+
+localStorage.removeItem("sandboxSave");
+
+// rebuild everything
+world=[];
+bgWorld=[];
+drops=[];
+saplings=[];
+
+generate();
+p.x=4000
+p.y=100;
+
+hotbar=[
+{id:ITEM_AXE,count:1},
+{id:0,count:0},
+{id:0,count:0},
+{id:0,count:0},
+{id:0,count:0}
+];
+
+selected=0;
+
+saveGame();
+
+}
+

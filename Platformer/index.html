@@ -19,11 +19,24 @@ canvas{background:#87CEEB;border:5px solid #e879d2;}
   right: 10px;
   
 }
+
+#resetButton {
+  padding: 10px 16px;
+  font-size: 10px;
+  border: none;
+  background: #ff4d88;
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
 </style>
 </head>
 
 <body>
 <canvas id="game" width="800" height="450"></canvas>
+<button id="resetButton">Reset?</button>
 <button id="exitButton">X</button>
 <script defer src="./logic/init.js"></script>
 <script defer src="./logic/texture.js"></script>
@@ -40,6 +53,10 @@ canvas{background:#87CEEB;border:5px solid #e879d2;}
 <script>
   document.getElementById("exitButton").onclick = () => {
   document.location.href = 'https://davidoats.github.io/ameryn-games/Selection/'
+};
+
+document.getElementById("resetButton").onclick = () => {
+  resetWorld()
 };
 </script>
 </body>
