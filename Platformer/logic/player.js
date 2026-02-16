@@ -136,13 +136,13 @@ return;
 }
 
 // ===== DIRT =====
-if(world[ty][tx]===TILE_DIRT){
+if(slot.id !==ITEM_SWORD && world[ty][tx]===TILE_DIRT){
 world[ty][tx]=0;
 addItem(ITEM_DIRT,1);
 return;
 }
 //grass
-if(world[ty][tx]===TILE_GRASS){
+if(slot.id !==ITEM_SWORD && world[ty][tx]===TILE_GRASS){
 world[ty][tx]=0;
 addItem(ITEM_DIRT,1);
 return;
@@ -152,6 +152,13 @@ return;
 if(slot.id===ITEM_PICK && world[ty][tx]===TILE_STONE){
 world[ty][tx]=0;
 addItem(ITEM_STONE,1);
+return;
+}
+
+// ===== IRON (Pickaxe only) ======
+if(slot.id===ITEM_PICK && world[ty][tx]===TILE_IRON){
+world[ty][tx]=0;
+addItem(ITEM_IRON,1);
 return;
 }
 
@@ -172,6 +179,9 @@ return;
     }
     else if(slot.id===ITEM_DIRT){
       world[ty][tx]=TILE_DIRT;
+    }
+    else if(slot.id===ITEM_IRON){
+      world[ty][tx]=TILE_IRON;
     }
 
     else if(slot.id===ITEM_SAPLING){
