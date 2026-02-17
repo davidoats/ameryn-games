@@ -84,12 +84,13 @@ function drawHotbar(){
     s.id==ITEM_PICK ? "#999999" :
     s.id==ITEM_SWORD ? "#2f43dd" :
     s.id==ITEM_AXE ? "#C0392B" :
-    s.id==ITEM_WOOD ? "#8B4513" :
+    s.id==ITEM_WOOD ? "#6B4423" :
     s.id==ITEM_IRON ? "#d6d6d6" :
     s.id==ITEM_SAPLING ? "#2ECC40" :
     s.id==ITEM_CRAFT ? "#C48A3A" :
     s.id==ITEM_STONE ? "#777777" :
     s.id==ITEM_DIRT ? "#8B4513" :
+    s.id==ITEM_HOE ? "#698459" :
 
     "#222";
 
@@ -116,10 +117,11 @@ function drawItem(slot,x,y,size){
     slot.id==ITEM_STONE ? "#777777" : 
     slot.id==ITEM_AXE ? "#C0392B" :
     slot.id==ITEM_IRON ? "#d6d6d6" :
-    slot.id==ITEM_WOOD ? "#8B4513" :
+    slot.id==ITEM_WOOD ? "#6B4423" :
     slot.id==ITEM_SAPLING ? "#2ECC40" :
     slot.id==ITEM_CRAFT ? "#C48A3A" :
     slot.id==ITEM_DIRT ? "#8B4513" :
+    slot.id==ITEM_HOE ? "#698459" :
     "#222";
 
   ctx.fillRect(x+10,y+10,size-20,size-20);

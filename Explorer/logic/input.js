@@ -12,6 +12,14 @@ window.addEventListener("keydown", e => {
     craftingOpen = !craftingOpen;
     }
 
+  if((e.key==="i" ||e.key==="I") && !e.repeat) {
+    if(inventoryOpen && dragItem.id) {
+      addItem(dragItem.id,dragItem.count);
+      dragItem={id:0,count:0}
+    }
+    console.log('inv')
+  }
+
   if(e.key>="1"&&e.key<="5") selected = e.key-1;
 });
 

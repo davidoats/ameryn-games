@@ -32,6 +32,15 @@ var recipes=[
       0,ITEM_WOOD,0
     ],
     result:{id:ITEM_SWORD,count:1}
+  },
+
+  {
+    pattern:[
+      ITEM_IRON,ITEM_IRON,0,
+      0.       ,ITEM_WOOD,0,
+      0        ,ITEM_WOOD,0
+    ],
+    result:{id:ITEM_HOE,count:1}
   }
 ];
 

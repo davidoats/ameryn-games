@@ -7,7 +7,8 @@ const ITEM_STONE = 300;
 const ITEM_DIRT = 400;
 const ITEM_IRON = 500;
 const ITEM_CRAFT = 100;
-const ITEM_SWORD = 600
+const ITEM_SWORD = 600;
+const ITEM_HOE = 700;
 
 const MAX_STACK=999;
 let selected=0;
@@ -19,6 +20,14 @@ let hotbar=[
   {id:0,count:0},
   {id:0,count:0}
 ];
+
+var inventoryOpen=false;
+
+let inventory=[
+  {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0},
+  {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0},
+  {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}
+]
 
 function addItem(id,count){
   for(let s of hotbar){
