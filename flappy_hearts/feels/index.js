@@ -65,6 +65,7 @@ function spawnHeart() {
 /* ---------- UPDATE ---------- */
 
 function update() {
+  if (!(localStorage.getItem('Flappy-HighScore'))) localStorage.setItem('Flappy-HighScore', 0);
   if (gameOver) return;
 
   // clouds
@@ -104,6 +105,7 @@ function update() {
     ) {
       hearts.splice(i, 1);
       score++;
+      if(score >= localStorage.getItem('Flappy-HighScore') ) localStorage.setItem('Flappy-HighScore', score);
       continue;
     }
 
@@ -133,7 +135,8 @@ function drawPlayer() {
 function drawScore() {
   ctx.fillStyle = "#ff1a75";
   ctx.font = "24px Arial";
-  ctx.fillText("Score: " + score, 20, 40);
+  ctx.fillText("High Score: " + localStorage.getItem('Flappy-HighScore'), 20, 40);
+  ctx.fillText("Score: " + score, 20, 70)
 }
 
 function drawGameOver() {
@@ -190,5 +193,7 @@ document.addEventListener("keydown", e => {
 document.getElementById("exitButton").onclick = () => {
   document.location.href = 'https://davidoats.github.io/ameryn-games/Selection/'
 };
+
+
 
 loop();
