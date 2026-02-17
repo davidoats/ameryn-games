@@ -25,13 +25,15 @@ let hotbar=[
 var inventoryOpen=false;
 dragItem={id:0,count:0};
 
-let inventoryEmpty=[
-  {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0},
-  {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0},
-  {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}, {id:0,count:0}
-]
+function createEmptyInventory(){
+  let arr=[];
+  for(let i=0;i<15;i++){
+    arr.push({id:0,count:0});
+  }
+  return arr;
+}
 
-let inventory = inventoryEmpty;
+let inventory = createEmptyInventory();
 
 canvas.addEventListener("mousedown", e => {
   if(!inventoryOpen) return;
@@ -59,7 +61,7 @@ canvas.addEventListener("mousedown", e => {
   for(let y=0;y<3;y++){
     for(let x=0;x<5;x++){
 
-      let i=y*3+x;
+      let i = y*5 + x;
       let px=startX+x*cell; 
       let py=startY+y*cell;
 

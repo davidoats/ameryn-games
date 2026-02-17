@@ -68,7 +68,7 @@ function resetSlot(slot){
   bgWorld=[];
   drops=[];
   saplings=[];
-  inventory=inventoryEmpty;
+  inventory=createEmptyInventory();
 
   generate();
   p.x=4000

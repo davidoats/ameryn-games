@@ -179,7 +179,7 @@ function drawInventory(){
 
   for(let y=0;y<3;y++){
     for(let x=0;x<5;x++){
-      let i=3*y+x
+      let i = y*5 + x;
       let px=startX+x*cell;
       let py=startY+y*cell;
       ctx.fillStyle="#444";
