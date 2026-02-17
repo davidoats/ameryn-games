@@ -20,24 +20,62 @@ canvas{background:#87CEEB;border:5px solid #e879d2;}
   
 }
 
-#resetButton {
-  padding: 10px 16px;
-  font-size: 10px;
+#saveMenuBTN {
+  padding: 13px 16px;
+  font-size: 14px;
   border: none;
   background: #ff4d88;
   color: white;
   cursor: pointer;
   position: absolute;
   top: 10px;
-  left: 10px;
+  right: 65px;
 }
+
+#saveUI{
+position:absolute;
+background:rgba(0,0,0,0.7);
+padding:50px 80px;
+border-radius:10px;
+align-items: center;
+color:white;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+#saveUI button{
+margin:3px 42px;
+padding: 10px 10px;
+border:none;
+background:#ff66aa;
+color:white;
+font-weight:bold;
+border-radius:6px;
+cursor:pointer;
+}
+
+#saveUI h2 {
+  padding: 10px;
+  background:rgba(0,0,0,0);
+  border-radius: 10px;
+}
+.hidden {
+  visibility: hidden;
+}
+
 </style>
 </head>
 
 <body>
 <canvas id="game" width="800" height="450"></canvas>
-<button id="resetButton">Reset?</button>
+<div id="saveUI" class="hidden">
+  <h2>Saves Menu</h2>
+      <button onclick="loadGame(1)">Slot 1</button></p>
+      <p><button onclick="loadGame(2)">Slot 2</button></p>
+      <p><button onclick="loadGame(3)">Slot 3</button></p>
+      <p><button onclick="resetSlot(activeSlot)">Reset</button></p>
+</div>
 <button id="exitButton">X</button>
+<button id="saveMenuBTN">Manage Saves</button>
 <script defer src="./logic/init.js"></script>
 <script defer src="./logic/texture.js"></script>
 <script defer src="./logic/world.js"></script>
@@ -52,12 +90,12 @@ canvas{background:#87CEEB;border:5px solid #e879d2;}
 
 <script>
   document.getElementById("exitButton").onclick = () => {
-  document.location.href = 'https://davidoats.github.io/ameryn-games/Selection/'
-};
-
-document.getElementById("resetButton").onclick = () => {
-  resetWorld()
-};
+    document.location.href = 'https://davidoats.github.io/ameryn-games/Selection/'
+  };
+  document.getElementById("saveMenuBTN").onclick = () => {
+    const saveManagerUI = document.getElementById("saveUI")
+    saveManagerUI.classList.toggle("hidden")
+  };  
 </script>
 </body>
 </html>

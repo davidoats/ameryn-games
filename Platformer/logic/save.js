@@ -1,13 +1,27 @@
+var activeSlot = 1;
+
 function saveGame(){
-  localStorage.setItem("sandboxSave",JSON.stringify({
-    world,bgWorld,drops,hotbar,p,selected,saplings
+  localStorage.setItem("sandboxSave_slot"+activeSlot, JSON.stringify({
+    world,
+    bgWorld,
+    drops,
+    hotbar,
+    p,
+    selected,
+    saplings
   }));
 }
 
-function loadGame(){
-  let data=localStorage.getItem("sandboxSave");
-  if(!data)return false;
-  let s=JSON.parse(data);
+function loadGame(slot){
+  activeSlot = slot;
+  let data = localStorage.getItem("sandboxSave_slot"+slot);
+
+  if(!data){
+    generate();
+    return;
+  }
+
+  let s = JSON.parse(data);
 
   world=s.world;
   bgWorld=s.bgWorld;
@@ -19,38 +33,34 @@ function loadGame(){
   p.x=s.p.x;
   p.y=s.p.y;
 
-  return true;
 }
 
 if(!loadGame())generate();
 
-function resetWorld(){
+function resetSlot(slot){
+  if(!confirm("Reset slot "+slot+"? 💔")) return;
 
-if(!confirm("Reset world? This cannot be undone 💔")) return;
+  localStorage.removeItem("sandboxSave_slot"+slot);
+  if(slot===activeSlot){
+    // rebuild everything
+  world=[];
+  bgWorld=[];
+  drops=[];
+  saplings=[];
 
-localStorage.removeItem("sandboxSave");
+  generate();
+  p.x=4000
+  p.y=100;
 
-// rebuild everything
-world=[];
-bgWorld=[];
-drops=[];
-saplings=[];
+  hotbar=[
+    {id:ITEM_AXE,count:1},
+    {id:0,count:0},
+    {id:0,count:0},
+    {id:0,count:0},
+    {id:0,count:0}
+  ];
 
-generate();
-p.x=4000
-p.y=100;
-
-hotbar=[
-{id:ITEM_AXE,count:1},
-{id:0,count:0},
-{id:0,count:0},
-{id:0,count:0},
-{id:0,count:0}
-];
-
-selected=0;
-
-saveGame();
-
+  selected=0;
+  saveGame();
+  }
 }
-
