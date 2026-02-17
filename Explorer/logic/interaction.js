@@ -1,4 +1,5 @@
 function hasLineOfSight(tx,ty){
+  if(inventoryOpen || craftingOpen) return false;
   let px=(p.x+p.w/2)/tile;
   let py=(p.y+p.h/2)/tile;
   let dx=tx+0.5-px;

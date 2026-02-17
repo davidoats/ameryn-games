@@ -114,6 +114,10 @@ function takeCraftResult(){
 
 // ===== SLOT CLICK =====
 function clickSlot(slot){
+  console.log('clickslot ' + slot.id)
+    if(dragItem.id===0 && slot.id===0){
+    return;
+  }
   // pick up 1
   if(dragItem.id===0 && slot.id!==0){
     dragItem.id=slot.id;

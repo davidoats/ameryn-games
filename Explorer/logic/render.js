@@ -169,6 +169,26 @@ function drawCrafting(){
   ctx.fillText("Crafting",startX,startY-10);
 }
 
+function drawInventory(){
+  if(!inventoryOpen) return;
+
+  var cell=60;
+
+  var startX=canvas.width/2-cell*5/2;
+  var startY=canvas.height/2-cell*3/2;
+
+  for(let y=0;y<3;y++){
+    for(let x=0;x<5;x++){
+      let i=3*y+x
+      let px=startX+x*cell;
+      let py=startY+y*cell;
+      ctx.fillStyle="#444";
+      ctx.fillRect(px,py,cell-2,cell-4);
+      drawItem(inventory[i],px,py,cell);
+    }
+  }
+}
+
 // ===== DRAG CURSOR =====
 
 function drawDragItem(){
@@ -185,5 +205,6 @@ function draw(){
   drawPlayer();
   drawHotbar();
   drawCrafting();
+  drawInventory();
   drawDragItem();
 }

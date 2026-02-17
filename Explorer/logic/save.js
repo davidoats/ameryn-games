@@ -1,11 +1,12 @@
-var activeSlot = 1;
-
+let activeSlot = 1;
 function saveGame(){
+  if (!(activeSlot)) activeSlot =1;
   localStorage.setItem("sandboxSave_slot"+activeSlot, JSON.stringify({
     world,
     bgWorld,
     drops,
     hotbar,
+    inventory,
     p,
     selected,
     saplings
@@ -14,10 +15,29 @@ function saveGame(){
 
 function loadGame(slot){
   activeSlot = slot;
+  if (!(activeSlot)) slot=1
   let data = localStorage.getItem("sandboxSave_slot"+slot);
 
   if(!data){
-    generate();
+  world=[];
+  bgWorld=[];
+  drops=[];
+  saplings=[];
+  inventory=inventoryEmpty;
+
+  generate();
+  p.x=4000
+  p.y=100;
+
+  hotbar=[
+    {id:ITEM_AXE,count:1},
+    {id:0,count:0},
+    {id:0,count:0},
+    {id:0,count:0},
+    {id:0,count:0}
+  ];
+
+  selected=0;
     return;
   }
 
@@ -27,6 +47,7 @@ function loadGame(slot){
   bgWorld=s.bgWorld;
   drops=s.drops;
   hotbar=s.hotbar;
+  inventory=s.inventory;
   selected=s.selected;
   saplings=s.saplings||[];
 
@@ -47,6 +68,7 @@ function resetSlot(slot){
   bgWorld=[];
   drops=[];
   saplings=[];
+  inventory=inventoryEmpty;
 
   generate();
   p.x=4000
