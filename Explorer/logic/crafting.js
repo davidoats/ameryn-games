@@ -37,7 +37,7 @@ var recipes=[
   {
     pattern:[
       ITEM_IRON,ITEM_IRON,0,
-      0.       ,ITEM_WOOD,0,
+      0,       ,ITEM_WOOD,0,
       0        ,ITEM_WOOD,0
     ],
     result:{id:ITEM_HOE,count:1}
@@ -113,35 +113,101 @@ function takeCraftResult(){
 }
 
 // ===== SLOT CLICK =====
-function clickSlot(slot){
-  console.log('clickslot ' + slot.id)
-    if(dragItem.id===0 && slot.id===0){
-    return;
-  }
-  // pick up 1
-  if(dragItem.id===0 && slot.id!==0){
-    dragItem.id=slot.id;
-    dragItem.count=1;
-    slot.count--;
-    if(slot.count<=0) slot.id=0;
-    return;
-  }
-  // place 1
-  if(dragItem.id===slot.id && slot.count<MAX_STACK){
-    slot.count++;
-    dragItem.count--;
+function handleSlotClick(slot, shift, right){
 
-    if(dragItem.count<=0){
-      dragItem.id=0;
-      dragItem.count=0;
-    }
-    return;
-  }
-  // swap
-  if(dragItem.id!==slot.id){
-    swap(slot,dragItem);
-  }
+if (slot.id===0 && dragItem.id ===0) return;
+// ===== SHIFT MOVE STACK =====
+if(shift && slot.id !== 0){
+
+let remaining;
+
+if(hotbar.includes(slot)){
+  remaining = moveStack(slot, inventory);
+}else{
+  remaining = moveStack(slot, hotbar);
 }
+
+slot.count = remaining;
+if(slot.count <= 0) slot.id = 0;
+
+return;
+}
+
+
+
+// ===== RIGHT CLICK SPLIT =====
+if(right && slot.count > 1 && dragItem.id === 0){
+
+let half = Math.floor(slot.count / 2);
+
+dragItem.id = slot.id;
+dragItem.count = half;
+
+slot.count -= half;
+
+return;
+}
+
+
+// ===== NORMAL CLICK =====
+
+// pick up 1
+if(dragItem.id === 0 && slot.id !== 0){
+dragItem.id = slot.id;
+dragItem.count = 1;
+
+slot.count--;
+if(slot.count <= 0) slot.id = 0;
+return;
+}
+
+// place 1
+if(dragItem.id === slot.id && slot.count < MAX_STACK){
+slot.count+=dragItem.count;
+dragItem.count =0;
+
+if(dragItem.count <= 0){
+dragItem.id = 0;
+dragItem.count = 0;
+}
+return;
+}
+
+// swap
+if(dragItem.id !== slot.id){
+swap(slot, dragItem);
+}
+
+}
+
+function moveStack(from, targetArray){
+
+let remaining = from.count;
+
+// stack onto existing
+for(let s of targetArray){
+if(s.id === from.id && s.count < MAX_STACK){
+let add = Math.min(remaining, MAX_STACK - s.count);
+s.count += add;
+remaining -= add;
+if(remaining === 0) return 0;
+}
+}
+
+// move into empty
+for(let s of targetArray){
+if(s.id === 0){
+let add = Math.min(remaining, MAX_STACK);
+s.id = from.id;
+s.count = add;
+remaining -= add;
+if(remaining === 0) return 0;
+}
+}
+
+return remaining;
+}
+
 
 // ===== SWAP =====
 function swap(a,b){
@@ -166,7 +232,7 @@ canvas.addEventListener("mousedown", e => {
     let x=hbStart+i*hbSize;
 
     if(mx>x && mx<x+hbSize && my>hbY && my<hbY+hbSize){
-      clickSlot(hotbar[i]);
+      handleSlotClick(hotbar[i], false, false);
       updateCrafting();
       return;
     }
@@ -186,7 +252,7 @@ canvas.addEventListener("mousedown", e => {
       let py=startY+y*cell;
 
       if(mx>px && mx<px+cell && my>py && my<py+cell){
-        clickSlot(craftGrid[i]);
+        handleSlotClick(craftGrid[i], false, false);
         updateCrafting();
         return;
       }
